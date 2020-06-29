@@ -1,12 +1,12 @@
-const authorModels = require('../models/authors')
+const roleModels = require('../models/roles')
 
 const helper = require('../helpers/index')
 
 module.exports = {
     //async menunggu data result 
-    getAuthors: async function (request, response) {
+    getRoles: async function (request, response) {
         try {
-            const result = await authorModels.getAuthors()
+            const result = await roleModels.getRoles()
 
             return helper.response(response, 200, result)
         } catch (error) {
@@ -15,24 +15,13 @@ module.exports = {
         }
     },
 
-     getAllBorrowBookData: async function (request, response) {
-        try {
-            const user_id = request.params.id
-            const result = await authorModels.getAllBorrowBookData(user_id)
-            return helper.response(response, 200, result)
-        } catch (error) {
-            helper.customErrorResponse(response, 404, 'cant see the borrow book')
-
-        }
-    },
-
-     postAuthors: async function (request, response) {
+    postRoles: async function (request, response) {
 
         try {
 
             const setData = request.body
             console.log(setData)
-            const result = await authorModels.postAuthors(setData)
+            const result = await roleModels.postRoles(setData)
 
             return helper.response(response, 200, result)
         } catch (error) {
@@ -42,14 +31,14 @@ module.exports = {
 
     },
 
-    putAuthor: async function (request, response) {
+    putRoles: async function (request, response) {
 
         try {
 
             const setData = request.body
             const id = request.params.id
             console.log(setData)
-            const result = await authorModels.putAuthor(setData, id)
+            const result = await roleModels.putRoles(setData, id)
 
             return helper.response(response, 200, result)
         } catch (error) {
@@ -59,12 +48,12 @@ module.exports = {
 
     },
 
-     deleteAuthor: async function (request, response) {
+    deleteRoles: async function (request, response) {
 
         try {
 
             const id = request.params.id
-            const result = await authorModels.deleteAuthor(id)
+            const result = await roleModels.deleteRoles(id)
 
             return helper.response(response, 200, result)
         } catch (error) {
@@ -73,4 +62,6 @@ module.exports = {
 
 
     }
- }
+
+
+}

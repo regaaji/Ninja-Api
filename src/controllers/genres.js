@@ -1,5 +1,5 @@
 const genreModels = require('../models/genres')
-
+const errorHandler = require('../helpers/ErrorHandling')
 const helper = require('../helpers/index')
 
 module.exports = {

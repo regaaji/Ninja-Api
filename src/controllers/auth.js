@@ -33,6 +33,8 @@ module.exports = {
     },
     loginUser: async(request, response) => {
         try {
+          console.log(request.body.username);
+          console.log(request.body.password);
             const data = {
                 username: request.body.username,
                 password: request.body.password
@@ -44,7 +46,7 @@ module.exports = {
 
 
              if (hashPassword.passwordHash === result[0].password) {
-                const token = jwt.sign({result, role: result[0].role}, process.env.JWT_KEY, {expiresIn: '1m'})
+                const token = jwt.sign({result, role: result[0].role}, process.env.JWT_KEY, {expiresIn: '20m'})
                 const refreshToken = jwt.sign({ result, role: result[0].role}, process.env.JWT_KEY_SECRET);
 
                 refreshTokens.push(refreshToken);
@@ -81,15 +83,15 @@ module.exports = {
           const refreshTokenSecret = process.env.JWT_KEY_SECRET
           const api_key = process.env.JWT_KEY
           const { api_token } = request.body
+         console.log(api_token)
           
           if (!api_token){
            return helper.response(response, 400, 'unathorization') 
          } 
 
-         console.log(refreshTokens)
 
          if (!refreshTokens.includes(api_token)) {
-          return response.sendStatus(403, 'Forbidden');
+          return helper.response(response, 403, 'Forbidden') 
         }
 
         jwt.verify(api_token, refreshTokenSecret, (error, result) => {
@@ -99,7 +101,7 @@ module.exports = {
 
           // console.log(result)
 
-            const token = jwt.sign({ result, role: result.role }, api_key, { expiresIn: '1m' })
+            const token = jwt.sign({ result, role: result.role }, api_key, { expiresIn: '5m' })
             // console.log(token)
             return helper.response(response, 200, {
               token
@@ -108,8 +110,36 @@ module.exports = {
 
         }catch(error){
            console.log(error)
-            return helper.response(response, 400, error)
+            return helper.response(response, 400, 'Refresh token failed')
       }
 
-    }
+    },
+
+     allUser: async function (request, response) {
+        try {
+            const result = await authModels.getUsers()
+
+            return helper.response(response, 200, result)
+        } catch (error) {
+            return helper.response(response, 500, error)
+
+        }
+    },
+
+    deleteUser: async function (request, response) {
+
+        try {
+
+            const id = request.params.id
+            const result = await authModels.deleteUser(id)
+
+            return helper.response(response, 200, result)
+        } catch (error) {
+            return helper.response(response, 500, error)
+        }
+
+
+    },
+
+    
 }
