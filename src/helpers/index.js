@@ -13,22 +13,26 @@ module.exports = {
         passwordHash: value
       }
     },
-    response: (response, status, result, pagination) => {
-    var page = []
+    response: (response, status, result, pagination, pageDetail) => {
+    // var page = []
     var data = {}
 
     console.log(pagination)
 
-    if(pagination) {
+    // if(pagination) {
 
-      for(var i = 1; i <= pagination.totalPages; i++){
-        page[i-1] = i
-      }
-      data.totalPages = page
-    }
+      // for(var i = 1; i <= pagination.totalPages; i++){
+      //   page[i-1] = i
+      // }
+    //   data.totalPages = pagination.totalPages,
+    //   data.limit = pagination.limit,
+    //   data.page = pagination.page
+    // }
 
     data.status = status || 200
+    // data.pageDetail = pageDetail || {}
     data.result = result
+    data.pagination = pagination || {}
 
     return response.status(data.status).json(data)
   },

@@ -1,9 +1,9 @@
 const connection = require('../config/mysql')
 
 module.exports = {
-    getAuthors: function () {
+    getRoles: function () {
         return new Promise(function (resolve, reject) {
-            connection.query('SELECT * FROM authors', function (error, result) {
+            connection.query('SELECT * FROM roles', function (error, result) {
                 if (!error) {
                     resolve(result)
                 } else {
@@ -13,21 +13,9 @@ module.exports = {
         })
     },
 
-    getAllBorrowBookData: function (user_id) {
+    postRoles: function (setData) {
         return new Promise(function (resolve, reject) {
-            connection.query('SELECT * FROM borrows WHERE user_id = ?', [user_id], function (error, result) {
-                if (!error) {
-                    resolve(result)
-                } else {
-                    reject(new Error(error))
-                }
-            })
-        })
-    },
-
-    postAuthors: function (setData) {
-        return new Promise(function (resolve, reject) {
-            connection.query('INSERT INTO authors SET ?', setData, function (error, result) {
+            connection.query('INSERT INTO roles SET ?', setData, function (error, result) {
                 if (!error) {
                     const newData = {
                         id: result.insertId,
@@ -41,10 +29,10 @@ module.exports = {
             })
         })
     },
-
-     putAuthor: function (setData, id) {
+ 
+    putRoles: function (setData, id) {
         return new Promise(function (resolve, reject) {
-            connection.query('UPDATE authors SET ? WHERE id = ?', [setData, id], function (error, result) {
+            connection.query('UPDATE roles SET ? WHERE id = ?', [setData, id], function (error, result) {
                 if (!error) {
                     resolve(result)
                 } else {
@@ -54,9 +42,9 @@ module.exports = {
         })
     },
 
-    deleteAuthor: function (id) {
+    deleteRoles: function (id) {
         return new Promise(function (resolve, reject) {
-            connection.query('DELETE FROM authors WHERE id = ?', id, function (error, result) {
+            connection.query('DELETE FROM roles WHERE id = ?', id, function (error, result) {
                 if (!error) {
                     resolve(result)
                 } else {

@@ -18,9 +18,9 @@ module.exports = {
 
     const firstData = ((pagination.limit * pagination.activePage) - pagination.limit)
 
-        connection.query(`SELECT b.id, b.title, g.name as author, a.name as genre, s.name as statusbook FROM books b INNER JOIN authors g ON b.author = g.id INNER JOIN genres a ON b.genre = a.id INNER JOIN statusbook s ON b.status = s.id
+        connection.query(`SELECT b.id, b.title, b.image, g.name as author, a.name as genre, s.name as statusbook FROM books b INNER JOIN authors g ON b.author = g.id INNER JOIN genres a ON b.genre = a.id INNER JOIN statusbook s ON b.status = s.id
           WHERE title LIKE '%${searchTitle}%'
-          ORDER BY ${pagination.sortBy} ${pagination.orderBy}
+          ORDER BY ${pagination.sortBy}
           LIMIT ${firstData},${pagination.limit}`,
           (error, result) => {
             if (error) reject(new Error(error))
@@ -60,7 +60,7 @@ module.exports = {
         })
       })
     },
-    
+
      getAllBorrowBook: function (id) {
         return new Promise(function (resolve, reject) {
             connection.query('SELECT * FROM borrows  INNER JOIN books ON borrows.books_id = books.id WHERE id_borrow = ?', [id], function (error, result) {
@@ -93,7 +93,7 @@ module.exports = {
 
      borrowBookData: (id) => {
       return new Promise((resolve, reject) => {
-        connection.query('UPDATE books SET status = ? WHERE id = ?', [2, id], (error, result) => {
+        connection.query('UPDATE books SET status = ? WHERE id = ?', [1, id], (error, result) => {
           if (error) reject(new Error(error))
             resolve(result)
         })
@@ -103,7 +103,16 @@ module.exports = {
 
      returnBookData: (id) => {
       return new Promise((resolve, reject) => {
-        connection.query('UPDATE books SET status = ? WHERE id = ?', [1, id], (error, result) => {
+        connection.query('UPDATE books SET status = ? WHERE id = ?', [2, id], (error, result) => {
+          if (error) reject(new Error(error))
+            resolve(result)
+        })
+      })
+    },
+
+    addBorrowBook: (data) => {
+      return new Promise((resolve, reject) => {
+          connection.query('INSERT INTO borrows SET ?', data, (error, result) => {
           if (error) reject(new Error(error))
             resolve(result)
         })

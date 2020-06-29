@@ -1,8 +1,8 @@
 const multer = require('multer')
 const path = require('path')
 const storage = multer.diskStorage({
-  destination: (request, file, cb) => {
-    cb(null, './src/uploads')
+   destination: (request, file, cb) => {
+    cb(null, __dirname+'../../public/images/')
   },
   filename(req, file, cb) {
         cb(null, `${file.fieldname}-${Date.now()}`+path.extname(file.originalname))
@@ -14,12 +14,13 @@ const fileFilter = (request, file, cb, error) => {
   if (imageFilter === 'image/jpg' || imageFilter === 'image/jpeg' || imageFilter === 'image/png') {
     cb(null, true)
   } else {
-    cb('extension image only jpeg jpg and png', false)
+    cb('extension image only jpeg, jpg, and png', false)
+    // alert('extension image only jpeg, jpg, and png')
   }
 }
 const upload = multer({
   storage,
-fileFilter,
+  fileFilter,
   limits: {
     fileSize: 2024 * 2024
   }

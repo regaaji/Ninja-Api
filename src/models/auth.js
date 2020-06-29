@@ -38,5 +38,24 @@ module.exports = {
                 resolve(result)
         })
       })
-    }
+    },
+
+    getUsers: () => {
+        return new Promise((resolve, reject) => {
+            connection.query(`SELECT id, name, username, role, created_at, updated_at FROM users`, (error, result) => {
+            if (error) reject(new Error(error))
+                resolve(result)
+        })
+      })
+    },
+
+    deleteUser: (id) => {
+        return new Promise((resolve, reject) => {
+            connection.query(`DELETE FROM users WHERE id = ?`, id, (error, result) => {
+            if (error) reject(new Error(error))
+                resolve(result)
+        })
+      })
+    },
+
 }
