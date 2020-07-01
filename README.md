@@ -1,4 +1,4 @@
-# 📚Ninja Library App
+<h1 align="center">Ninja Library App 📚</h1>
 <p align="center">
   <a href="http://opensource.org/licenses/MIT">
     <img title="MIT license" src="http://img.shields.io/badge/license-MIT-brightgreen.svg">
@@ -18,6 +18,10 @@
   </a>
 
 </p>
+
+## Introduction
+<b>Ninja Api</b>  is application specially for backend only. Built with NodeJs using the ExpressJs Framework.
+Express.js is a web application framework for Node.js. [More about Express](https://en.wikipedia.org/wiki/Express.js)
 
 ## Build Setup
 
