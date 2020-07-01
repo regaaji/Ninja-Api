@@ -77,4 +77,56 @@ $ yarn start
 ---
 
 
+## Book's endpoint
+
+| No  | HTTP Method | URI                                 | Operation                                  |
+| --- | ----------- | ----------------------------------- | ------------------------------------------ |
+| 1   | GET         | /books/                             | Get all books data                         |
+| 2   | GET         | /books/:book_id                     | Get book’s data by it’s ID                 |
+| 3   | GET         | /books/?limit=1&page=2              | Get book data based on pages and limits    |
+| 4   | GET         | /books/?search=book_title           | Search books data by title keyword         |
+| 5   | GET         | /books/?sortBy=book_title           | Sort books data by the title               |
+| 6   | GET         | /books/?sortBy=author               | Sort books data by the author              |
+| 7   | GET         | /books/?sortBy=genre                | Sort books data by the genre               |
+| 8   | GET         | /books/?sortBy=statusbook           | Sort books data by the statusbook          |
+| 9   | POST        | /books/                             | Insert new book data                       |
+| 10  | PUT         | /books/update/:book_id              | Edit or update the book’s data by it’s ID  |
+| 11  | DELETE      | /books/delete/:book_id              | Delete the book’s data from database by ID |
+
+
+
+## Genre's endpoint
+
+| No  | HTTP Method | URI                             | Operation                                  |
+| --- | ----------- | ------------------------------- | ------------------------------------------ |
+| 1   | GET         | /book/genres/                   | Get all genres data                        |
+| 2   | POST        | /book/genres/                   | Insert new genre data                      |
+| 3   | PUT         | /book/genres/:genre_id          | Edit or update the genre’s data by it’s ID |
+| 4   | DELETE      | /book/genres/:genre_id          | Delete genre’s data by it’s ID             |
+
+
+
+## Author's endpoint
+
+| No  | HTTP Method | URI                             | Operation                                  |
+| --- | ----------- | ------------------------------- | ------------------------------------------ |
+| 1   | GET         | /book/authors/                  | Get all authors data                       |
+| 2   | GET         | /book/authors/history/users_id  | Get history data by it’s ID                |
+| 3   | POST        | /book/authors/                  | Insert new author data                      |
+| 4   | PUT         | /book/authors/:author_id        | Edit or update the author’s data by it’s ID |
+| 5   | DELETE      | /book/authors/:author_id        | Delete author’s data by it’s ID             |
+
+
+
+## User's endpoint
+
+| No  | HTTP Method | URI                       | Operation                                                             |
+| --- | ----------- | ----------------------    | --------------------------------------------------------------------- |
+| 1   | POST        | /book/auth/register       | Insert new user data                                                  |
+| 2   | POST        | /book/auth/login          | User’s login to get JWT token’s for full access on the backend system |
+| 3   | GET         | /book/auth/users          | Get all users data                                                    |
+| 4   | DELETE      | /book/auth/users/users_id | Delete user’s data by it’s ID                                        |
+
+
+
 Copyright © 2020 by Rega Aji Prayogo
