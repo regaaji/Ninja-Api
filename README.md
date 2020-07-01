@@ -19,6 +19,20 @@
 
 </p>
 
+
+
+## Table of Contents
+
+- [Introduction](#introduction)
+- [Build Setup](#build-setup)
+- [Requirements](#requirements)
+- [Usage](#usage-for-development)
+- [Screenshots](#screenshots)
+- [Release APK](#release-apk)
+- [Related Project](#related-project-backend)
+- [Contributors](#contributors)
+
+
 ## Introduction
 <b>Ninja Api</b>  is application specially for backend only. Built with NodeJs using the ExpressJs Framework.
 Express.js is a web application framework for Node.js. [More about Express](https://en.wikipedia.org/wiki/Express.js)
