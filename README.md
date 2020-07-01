@@ -25,12 +25,10 @@
 
 - [Introduction](#introduction)
 - [Build Setup](#build-setup)
-- [Requirements](#requirements)
-- [Usage](#usage-for-development)
-- [Screenshots](#screenshots)
-- [Release APK](#release-apk)
-- [Related Project](#related-project-backend)
-- [Contributors](#contributors)
+- [Stacks](#stacks)
+- [Dependencies](#dependencies)
+- [Aplication Structure](#aplication-structure)
+
 
 
 ## Introduction
