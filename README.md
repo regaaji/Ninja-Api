@@ -95,19 +95,15 @@ $ yarn start
 
 ## Book's endpoint
 
-| No  | HTTP Method | URI                                 | Operation                                  |
-| --- | ----------- | ----------------------------------- | ------------------------------------------ |
-| 1   | GET         | /books/                             | Get all books data                         |
-| 2   | GET         | /books/:book_id                     | Get book’s data by it’s ID                 |
-| 3   | GET         | /books/?limit=1&page=2              | Get book data based on pages and limits    |
-| 4   | GET         | /books/?search=book_title           | Search books data by title keyword         |
-| 5   | GET         | /books/?sortBy=book_title           | Sort books data by the title               |
-| 6   | GET         | /books/?sortBy=author               | Sort books data by the author              |
-| 7   | GET         | /books/?sortBy=genre                | Sort books data by the genre               |
-| 8   | GET         | /books/?sortBy=statusbook           | Sort books data by the statusbook          |
-| 9   | POST        | /books/                             | Insert new book data                       |
-| 10  | PUT         | /books/update/:book_id              | Edit or update the book’s data by it’s ID  |
-| 11  | DELETE      | /books/delete/:book_id              | Delete the book’s data from database by ID |
+| No  | HTTP Method |                         URI                           | Operation                                  |
+| --- | ----------- | ----------------------------------------------------- | ------------------------------------------ |
+| 1   | GET         | /books/                                               | Get all books data                         |
+| 2   | GET         | /books/:book_id                                       | Get book’s data by it’s ID                 |
+| 3   | GET         | /books/?limit=1&page=2&search=Harry&sortBy=statusbook | Get book data based on pages and limits    |
+| 4   | GET         | /books/?search=book_title                             | Search books data by title keyword         |
+| 9   | POST        | /books/                                               | Insert new book data                       |
+| 10  | PUT         | /books/update/:book_id                                | Edit or update the book’s data by it’s ID  |
+| 11  | DELETE      | /books/delete/:book_id                                | Delete the book’s data from database by ID |
 
 
 
@@ -140,8 +136,6 @@ $ yarn start
 | --- | ----------- | ----------------------    | --------------------------------------------------------------------- |
 | 1   | POST        | /book/auth/register       | Insert new user data                                                  |
 | 2   | POST        | /book/auth/login          | User’s login to get JWT token’s for full access on the backend system |
-| 3   | GET         | /book/auth/users          | Get all users data                                                    |
-| 4   | DELETE      | /book/auth/users/users_id | Delete user’s data by it’s ID                                        |
 
 
 
