@@ -138,5 +138,43 @@ $ yarn start
 | 2   | POST        | /book/auth/login          | User’s login to get JWT token’s for full access on the backend system |
 
 
+## Testing api
+###sample test script with ```Mocha``` and ```Chai```
 
+1. Create the folder ```test``` at root directory
+2. Create the file named ```book_test.spec.js``` at ```test``` folder
+
+For testing with ```Mocha``` and ```Chai``` we have just install devdependency
+```bash
+# with npm
+$ npm install mocha chai chai-http nyc --save-dev
+
+# or with yarn
+$ yarn add mocha chai chai-http nyc -D
+```
+At the ```book_test.spec.js``` file i have provide you the sample testing script for api testing.
+
+Then add the ```chai``` and ```chai-http``` package for testing the api server. for testing with api server we need to
+add main `js` file ```app.js``` as server 
+```javascript
+const chai = require('chai');
+const chaiHttp = require('chai-http');
+const app = require('../app');
+chai.should();
+chai.use(chaiHttp)
+```
+### [GET] /books testing:
+```javascript
+describe('/GET book', () => {
+    it('it should Get all books', (done) => {
+        chai.request(app)
+        .get('/books')
+        .end((err, res) => {
+            res.should.have.status(200);
+            res.body.should.be.a('object');
+            done();
+        });
+    });
+});
+```
 Copyright © 2020 by Rega Aji Prayogo
