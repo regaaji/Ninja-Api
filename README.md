@@ -139,10 +139,10 @@ $ yarn start
 
 
 ## Testing api
-###sample test script with ```Mocha``` and ```Chai```
+---sample test script with ```Mocha``` and ```Chai```
 
 1. Create the folder ```test``` at root directory
-2. Create the file named ```book_test.spec.js``` at ```test``` folder
+2. Create the file named ```book_test.spec.js```, ```author_test.spec.js```, and ```genre_test.spec.js```  at ```test``` folder
 
 For testing with ```Mocha``` and ```Chai``` we have just install devdependency
 ```bash
@@ -152,7 +152,7 @@ $ npm install mocha chai chai-http nyc --save-dev
 # or with yarn
 $ yarn add mocha chai chai-http nyc -D
 ```
-At the ```book_test.spec.js``` file i have provide you the sample testing script for api testing.
+
 
 Then add the ```chai``` and ```chai-http``` package for testing the api server. for testing with api server we need to
 add main `js` file ```app.js``` as server 
@@ -163,7 +163,8 @@ const app = require('../app');
 chai.should();
 chai.use(chaiHttp)
 ```
-### [GET] /books testing:
+write the following code in the file ```book_test.spec.js```
+### books testing:
 ```javascript
 describe('/GET book', () => {
     it('it should Get all books', (done) => {
@@ -177,4 +178,65 @@ describe('/GET book', () => {
     });
 });
 ```
+write the following code in the file ```author_test.spec.js```
+### authors testing:
+```javascript
+describe('Author.js', () => {
+    it('get author results are correct', (done) => {
+        chai.request(app)
+        .get('/book/authors')
+        .end((err, res) => {
+            res.should.have.status(200);
+            done();
+        });
+    });
+
+});
+```
+
+write the following code in the file ```genre_test.spec.js```
+### genres testing:
+```javascript
+describe('Genre.js', () => {
+    it('get genre results are correct', (done) => {
+        chai.request(app)
+        .get('/book/genres')
+        .end((err, res) => {
+            res.should.have.status(200);
+            done();
+        });
+    });
+
+});
+```
+
+Run Test
+
+```bash
+# with npm
+$ npm test
+
+# or with yarn
+$ yarn test
+```
+
+Run Test Coverage
+
+```bash
+# with npm
+$ npm run coverage
+
+# or with yarn
+$ yarn run coverage
+```
+
+
+
+## Screenshoot Coverage
+<div align="center">
+  <img width="500" src="./screenshoot/coverage1.png">
+  <img width="500" src="./screenshoot/coverage.png">
+
+</div>
+
 Copyright © 2020 by Rega Aji Prayogo
