@@ -2,9 +2,9 @@ const roleModels = require('../models/roles')
 
 const helper = require('../helpers/index')
 
-module.exports = {
+
     //async menunggu data result 
-    getRoles: async function (request, response) {
+    module.exports.getRoles = async function (request, response) {
         try {
             const result = await roleModels.getRoles()
 
@@ -15,7 +15,7 @@ module.exports = {
         }
     },
 
-    postRoles: async function (request, response) {
+    module.exports.postRoles = async function (request, response) {
 
         try {
 
@@ -31,7 +31,7 @@ module.exports = {
 
     },
 
-    putRoles: async function (request, response) {
+    module.exports.putRoles = async function (request, response) {
 
         try {
 
@@ -48,7 +48,7 @@ module.exports = {
 
     },
 
-    deleteRoles: async function (request, response) {
+    module.exports.deleteRoles = async function (request, response) {
 
         try {
 
@@ -63,5 +63,3 @@ module.exports = {
 
     }
 
-
-}

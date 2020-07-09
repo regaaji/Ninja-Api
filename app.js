@@ -17,7 +17,7 @@ var corsOptions = {
 }
 
 
-const server = app.listen(8001, "127.0.0.1", function () {
+const server = app.listen(8001, "0.0.0.0", function () {
     const host = server.address().address
     const port = server.address().port
     
@@ -41,4 +41,6 @@ app.use(morgan("dev"))
 app.use('/', routeNavigator)
 
 
+// app.listen(8001);
 
+module.exports = app;
