@@ -139,7 +139,7 @@ $ yarn start
 
 
 ## Testing api
----sample test script with ```Mocha``` and ```Chai```
+Sample test script with ```Mocha``` and ```Chai```
 
 1. Create the folder ```test``` at root directory
 2. Create the file named ```book_test.spec.js```, ```author_test.spec.js```, and ```genre_test.spec.js```  at ```test``` folder
@@ -163,7 +163,7 @@ const app = require('../app');
 chai.should();
 chai.use(chaiHttp)
 ```
-write the following code in the file ```book_test.spec.js```
+
 ### books testing:
 ```javascript
 describe('/GET book', () => {
@@ -178,7 +178,9 @@ describe('/GET book', () => {
     });
 });
 ```
-write the following code in the file ```author_test.spec.js```
+write the following code in the file ```book_test.spec.js```
+
+
 ### authors testing:
 ```javascript
 describe('Author.js', () => {
@@ -193,8 +195,9 @@ describe('Author.js', () => {
 
 });
 ```
+write the following code in the file ```author_test.spec.js```
 
-write the following code in the file ```genre_test.spec.js```
+
 ### genres testing:
 ```javascript
 describe('Genre.js', () => {
@@ -209,6 +212,9 @@ describe('Genre.js', () => {
 
 });
 ```
+write the following code in the file ```genre_test.spec.js```
+
+
 
 Run Test
 
