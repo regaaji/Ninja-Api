@@ -6,7 +6,7 @@ const app = require('../app');
 const expect = chai.expect;
 // import sinon
 const sinon = require("sinon");
-const indexPage = require("../src/controllers/books.js");
+// const indexPage = require("../src/controllers/books.js");
 
 chai.should();
 chai.use(chaiHttp);
